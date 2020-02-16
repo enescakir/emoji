@@ -45,12 +45,16 @@ This package contains Full Emoji List v12.0 based on [https://unicode.org/Public
 go test
 ```
 
-## Contributing
-We are accepting PRs that add characters to the class.
-Please use [this list](http://unicode.org/emoji/charts/full-emoji-list.html) to look up the unicode value and the name of the character.
+## Todo
+* Add `godoc`
+* Add country code to flag emoji converter
+* Add badges to README
+* Add tests
+* Add emoji constant generator
 
-## Security
-If you discover any security related issues, please email enes@cakir.web.tr.
+## Contributing
+I am accepting PRs that add characters to the class.
+Please use [this list](http://unicode.org/emoji/charts/full-emoji-list.html) to look up the unicode value and the name of the character.
 
 ## Credits
 - [Enes Çakır](https://github.com/enescakir)
