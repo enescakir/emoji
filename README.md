@@ -1,14 +1,14 @@
-# emoji :wolf: :evergreen_tree: :school_satchel:
+# emoji :rocket: :school_satchel: :tada:
 `emoji` is a minimalistic emoji library for Go. It lets you use emoji characters in strings.
 
 Inspired by [spatie/emoji](https://github.com/spatie/emoji)
 
-## Install
+## Install :floppy_disk:
 ``` bash
 go get github.com/enescakir/emoji
 ```
 
-## Usage
+## Usage :surfer:
 ```go
     package main
     
@@ -40,24 +40,24 @@ go get github.com/enescakir/emoji
 
 This package contains Full Emoji List v12.0 based on [https://unicode.org/Public/emoji/12.0/emoji-test.txt](https://unicode.org/Public/emoji/12.0/emoji-test.txt).
 
-## Testing
+## Testing :hammer:
 ``` bash
 go test
 ```
 
-## Todo
+## Todo :pushpin:
 * Add `godoc`
 * Add country code to flag emoji converter
 * Add badges to README
 * Add tests
 * Add emoji constant generator
 
-## Contributing
+## Contributing :man_technologist:
 I am accepting PRs that add characters to the class.
 Please use [this list](http://unicode.org/emoji/charts/full-emoji-list.html) to look up the unicode value and the name of the character.
 
-## Credits
+## Credits :star:
 - [Enes Çakır](https://github.com/enescakir)
 
-## License
+## License :scroll:
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
