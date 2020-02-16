@@ -20,8 +20,12 @@ go get github.com/enescakir/emoji
     
     func main() {
         fmt.Printf("hello %v from %v\n", emoji.WavingHand, emoji.FlagsForFlagTurkey)
-        fmt.Printf("different skin tones. default: %v light: %v dark: %v\n", emoji.ThumbsUp, emoji.OkHand.Tone(emoji.Light), emoji.CallMeHand.Tone(emoji.Dark))
-        fmt.Printf("emoji with multiple skins\n", emoji.PeopleHoldingHands.Tone(emoji.Light, emoji.Dark))
+        fmt.Printf("different skin tones. default: %v light: %v dark: %v\n", 
+            emoji.ThumbsUp,
+            emoji.OkHand.Tone(emoji.Light),
+            emoji.CallMeHand.Tone(emoji.Dark),
+        )
+        fmt.Printf("emoji with multiple skins: %v\n", emoji.PeopleHoldingHands.Tone(emoji.Light, emoji.Dark))
     }
 
     /* OUTPUT
