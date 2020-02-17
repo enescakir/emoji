@@ -57,7 +57,7 @@ go test
 ## Todo :pushpin:
 * Add `godoc`
 * Add badges to README
-* Add tests
+* Add benchmarks
 * Add emoji constant generator
 
 ## Contributing :man_technologist:

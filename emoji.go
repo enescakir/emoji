@@ -32,19 +32,23 @@ func (e Emoji) String() string {
 type EmojiWithTone Emoji
 
 func (e EmojiWithTone) String() string {
-	return strings.ReplaceAll(string(e), "@", string(Default))
+	return strings.ReplaceAll(string(e), "@", Default.String())
 }
 
 // Tone returns an emoji object with given skin tone.
 func (e EmojiWithTone) Tone(tones ...Tone) EmojiWithTone {
 	str := string(e)
+	if len(tones) == 0 {
+		tones = []Tone{Default}
+	}
+
 	for _, tone := range tones {
-		str = strings.Replace(str, "@", string(tone), 1)
+		str = strings.Replace(str, "@", tone.String(), 1)
 	}
 
 	if strings.Count(str, "@") > 0 {
 		lastTone := tones[len(tones)-1]
-		str = strings.ReplaceAll(str, "@", string(lastTone))
+		str = strings.ReplaceAll(str, "@", lastTone.String())
 	}
 
 	return EmojiWithTone(str)
