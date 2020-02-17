@@ -15,7 +15,7 @@ jobs:
     - name: Test
       run: |
         go mod tidy -v
-        go test -race -coverprofile=coverage.txt -covermode=atomic ./..
+        go test -race -coverprofile=coverage.txt -covermode=atomic ./...
     - uses: codecov/codecov-action@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
