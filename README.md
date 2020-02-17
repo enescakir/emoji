@@ -2,7 +2,8 @@
 [![Build Status](https://github.com/enescakir/emoji/workflows/build/badge.svg?branch=master)](https://github.com/enescakir/emoji/actions)
 [![godoc](https://godoc.org/github.com/enescakir/emoji?status.svg)](https://godoc.org/github.com/enescakir/emoji)
 [![Go Report Card](https://goreportcard.com/badge/github.com/enescakir/emoji)](https://goreportcard.com/report/github.com/enescakir/emoji)
-![MIT License](https://img.shields.io/github/license/enescakir/emoji)
+[![Codecov](https://img.shields.io/codecov/c/github/enescakir/emoji)](https://codecov.io/gh/enescakir/emoji)
+[![MIT License](https://img.shields.io/github/license/enescakir/emoji)](https://github.com/enescakir/emoji/blob/master/LICENSE)
 
 `emoji` is a minimalistic emoji library for Go. It lets you use emoji characters in strings.
 
@@ -61,7 +62,6 @@ go test
 
 ## Todo :pushpin:
 * Add `godoc`
-* Add badges to README
 * Add benchmarks
 * Add emoji constant generator
 
