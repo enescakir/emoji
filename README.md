@@ -1,6 +1,8 @@
 # emoji :rocket: :school_satchel: :tada:
-[![build](https://github.com/enescakir/emoji/workflows/build/badge.svg?branch=master)](https://github.com/enescakir/emoji/actions)
+[![Build Status](https://github.com/enescakir/emoji/workflows/build/badge.svg?branch=master)](https://github.com/enescakir/emoji/actions)
 [![godoc](https://godoc.org/github.com/enescakir/emoji?status.svg)](https://godoc.org/github.com/enescakir/emoji)
+[![Go Report Card](https://goreportcard.com/badge/github.com/enescakir/emoji)](https://goreportcard.com/report/github.com/enescakir/emoji)
+![MIT License](https://img.shields.io/github/license/enescakir/emoji)
 
 `emoji` is a minimalistic emoji library for Go. It lets you use emoji characters in strings.
 
