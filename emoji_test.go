@@ -105,3 +105,27 @@ func TestCountryFlagError(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkEmoji(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		_ = WavingHand.String()
+	}
+}
+
+func BenchmarkEmojiWithTone(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		_ = WavingHand.Tone(Medium).String()
+	}
+}
+
+func BenchmarkEmojiWithToneTwo(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		_ = WomanAndManHoldingHandsWithTwoTone.Tone(Medium, Dark).String()
+	}
+}
+
+func BenchmarkCountryFlag(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		_, _ = CountryFlag("tr")
+	}
+}
