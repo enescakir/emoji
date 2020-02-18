@@ -24,6 +24,7 @@ const (
 // Emoji defines an emoji object.
 type Emoji string
 
+// String returns string representation of the emoji.
 func (e Emoji) String() string {
 	return string(e)
 }
@@ -31,32 +32,38 @@ func (e Emoji) String() string {
 // EmojiWithTone defines an emoji object that has skin tone options.
 type EmojiWithTone Emoji
 
+// String returns string representation of the emoji with default skin tone.
 func (e EmojiWithTone) String() string {
 	return strings.ReplaceAll(string(e), "@", Default.String())
 }
 
-// Tone returns an emoji object with given skin tone.
-func (e EmojiWithTone) Tone(tones ...Tone) EmojiWithTone {
+// Tone returns string representation of the emoji with given skin tones.
+func (e EmojiWithTone) Tone(tones ...Tone) string {
 	str := string(e)
+
+	// if no given tones, return with default skin tone
 	if len(tones) == 0 {
-		tones = []Tone{Default}
+		return e.String()
 	}
 
-	for _, tone := range tones {
-		str = strings.Replace(str, "@", tone.String(), 1)
+	// replace tone one by one
+	for _, t := range tones {
+		str = strings.Replace(str, "@", t.String(), 1)
 	}
 
+	// if skin tone count is not enough, fill with last tone.
 	if strings.Count(str, "@") > 0 {
-		lastTone := tones[len(tones)-1]
-		str = strings.ReplaceAll(str, "@", lastTone.String())
+		last := tones[len(tones)-1]
+		str = strings.ReplaceAll(str, "@", last.String())
 	}
 
-	return EmojiWithTone(str)
+	return str
 }
 
 // Tone defines skin tone options for emojis.
 type Tone string
 
+// String returns string representation of the skin tone.
 func (t Tone) String() string {
 	return string(t)
 }
@@ -76,5 +83,7 @@ func CountryFlag(code string) (Emoji, error) {
 
 // countryCodeLetter shifts given letter byte as unicodeFlagBaseIndex and changes encoding
 func countryCodeLetter(l byte) string {
-	return html.UnescapeString(fmt.Sprintf("&#%v;", unicodeFlagBaseIndex+int(l)))
+	shifted := unicodeFlagBaseIndex + int(l)
+
+	return html.UnescapeString(fmt.Sprintf("&#%v;", shifted))
 }

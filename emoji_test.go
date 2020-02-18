@@ -40,7 +40,7 @@ func TestEmojiWithTone(t *testing.T) {
 	}
 
 	for i, tc := range tt {
-		got := tc.input.Tone(tc.tone).String()
+		got := tc.input.Tone(tc.tone)
 		if got != tc.expected {
 			t.Fatalf("test case %v fail: got: %v, expected: %v", i+1, got, tc.expected)
 		}
@@ -59,7 +59,7 @@ func TestEmojiWithToneTwo(t *testing.T) {
 	}
 
 	for i, tc := range tt {
-		got := tc.input.Tone(tc.tones...).String()
+		got := tc.input.Tone(tc.tones...)
 		if got != tc.expected {
 			t.Fatalf("test case %v fail: got: %v, expected: %v", i+1, got, tc.expected)
 		}
@@ -114,13 +114,13 @@ func BenchmarkEmoji(b *testing.B) {
 
 func BenchmarkEmojiWithTone(b *testing.B) {
 	for n := 0; n < b.N; n++ {
-		_ = WavingHand.Tone(Medium).String()
+		_ = WavingHand.Tone(Medium)
 	}
 }
 
 func BenchmarkEmojiWithToneTwo(b *testing.B) {
 	for n := 0; n < b.N; n++ {
-		_ = WomanAndManHoldingHandsWithTwoTone.Tone(Medium, Dark).String()
+		_ = WomanAndManHoldingHandsWithTwoTone.Tone(Medium, Dark)
 	}
 }
 
