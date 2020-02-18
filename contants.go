@@ -3,6 +3,7 @@ package emoji
 const (
 	// # GROUP: SMILEYS & EMOTION #####
 	// ## SUBGROUP: FACE-SMILING #####
+
 	GrinningFace                Emoji = "\U0001F600"
 	GrinningFaceWithBigEyes     Emoji = "\U0001F603"
 	GrinningFaceWithSmilingEyes Emoji = "\U0001F604"
@@ -18,6 +19,7 @@ const (
 	SmilingFaceWithHalo         Emoji = "\U0001F607"
 
 	// ## SUBGROUP: FACE-AFFECTION #####
+
 	SmilingFaceWithHearts      Emoji = "\U0001F970"
 	SmilingFaceWithHeartEyes   Emoji = "\U0001F60D"
 	StarStruck                 Emoji = "\U0001F929"
@@ -28,6 +30,7 @@ const (
 	KissingFaceWithSmilingEyes Emoji = "\U0001F619"
 
 	// ## SUBGROUP: FACE-TONGUE #####
+
 	FaceSavoringFood        Emoji = "\U0001F60B"
 	FaceWithTongue          Emoji = "\U0001F61B"
 	WinkingFaceWithTongue   Emoji = "\U0001F61C"
@@ -36,12 +39,14 @@ const (
 	MoneyMouthFace          Emoji = "\U0001F911"
 
 	// ## SUBGROUP: FACE-HAND #####
+
 	HuggingFace           Emoji = "\U0001F917"
 	FaceWithHandOverMouth Emoji = "\U0001F92D"
 	ShushingFace          Emoji = "\U0001F92B"
 	ThinkingFace          Emoji = "\U0001F914"
 
 	// ## SUBGROUP: FACE-NEUTRAL-SKEPTICAL #####
+
 	ZipperMouthFace       Emoji = "\U0001F910"
 	FaceWithRaisedEyebrow Emoji = "\U0001F928"
 	NeutralFace           Emoji = "\U0001F610"
@@ -54,6 +59,7 @@ const (
 	LyingFace             Emoji = "\U0001F925"
 
 	// ## SUBGROUP: FACE-SLEEPY #####
+
 	RelievedFace Emoji = "\U0001F60C"
 	PensiveFace  Emoji = "\U0001F614"
 	SleepyFace   Emoji = "\U0001F62A"
@@ -61,6 +67,7 @@ const (
 	SleepingFace Emoji = "\U0001F634"
 
 	// ## SUBGROUP: FACE-UNWELL #####
+
 	FaceWithMedicalMask Emoji = "\U0001F637"
 	FaceWithThermometer Emoji = "\U0001F912"
 	FaceWithHeadBandage Emoji = "\U0001F915"
@@ -74,15 +81,18 @@ const (
 	ExplodingHead       Emoji = "\U0001F92F"
 
 	// ## SUBGROUP: FACE-HAT #####
+
 	CowboyHatFace Emoji = "\U0001F920"
 	PartyingFace  Emoji = "\U0001F973"
 
 	// ## SUBGROUP: FACE-GLASSES #####
+
 	SmilingFaceWithSunglasses Emoji = "\U0001F60E"
 	NerdFace                  Emoji = "\U0001F913"
 	FaceWithMonocle           Emoji = "\U0001F9D0"
 
 	// ## SUBGROUP: FACE-CONCERNED #####
+
 	ConfusedFace              Emoji = "\U0001F615"
 	WorriedFace               Emoji = "\U0001F61F"
 	SlightlyFrowningFace      Emoji = "\U0001F641"
@@ -109,6 +119,7 @@ const (
 	YawningFace               Emoji = "\U0001F971"
 
 	// ## SUBGROUP: FACE-NEGATIVE #####
+
 	FaceWithSteamFromNose  Emoji = "\U0001F624"
 	PoutingFace            Emoji = "\U0001F621"
 	AngryFace              Emoji = "\U0001F620"
@@ -119,6 +130,7 @@ const (
 	SkullAndCrossbones     Emoji = "\u2620\uFE0F"
 
 	// ## SUBGROUP: FACE-COSTUME #####
+
 	PileOfPoo    Emoji = "\U0001F4A9"
 	ClownFace    Emoji = "\U0001F921"
 	Ogre         Emoji = "\U0001F479"
@@ -129,6 +141,7 @@ const (
 	Robot        Emoji = "\U0001F916"
 
 	// ## SUBGROUP: CAT-FACE #####
+
 	GrinningCat                Emoji = "\U0001F63A"
 	GrinningCatWithSmilingEyes Emoji = "\U0001F638"
 	CatWithTearsOfJoy          Emoji = "\U0001F639"
@@ -140,11 +153,13 @@ const (
 	PoutingCat                 Emoji = "\U0001F63E"
 
 	// ## SUBGROUP: MONKEY-FACE #####
+
 	SeeNoEvilMonkey   Emoji = "\U0001F648"
 	HearNoEvilMonkey  Emoji = "\U0001F649"
 	SpeakNoEvilMonkey Emoji = "\U0001F64A"
 
 	// ## SUBGROUP: EMOTION #####
+
 	KissMark          Emoji = "\U0001F48B"
 	LoveLetter        Emoji = "\U0001F48C"
 	HeartWithArrow    Emoji = "\U0001F498"
@@ -183,6 +198,7 @@ const (
 
 	// # GROUP: PEOPLE & BODY #####
 	// ## SUBGROUP: HAND-FINGERS-OPEN #####
+
 	WavingHand             EmojiWithTone = "\U0001F44B@"
 	RaisedBackOfHand       EmojiWithTone = "\U0001F91A@"
 	HandWithFingersSplayed EmojiWithTone = "\u1F590\uFE0F@"
@@ -190,6 +206,7 @@ const (
 	VulcanSalute           EmojiWithTone = "\U0001F596@"
 
 	// ## SUBGROUP: HAND-FINGERS-PARTIAL #####
+
 	OkHand         EmojiWithTone = "\U0001F44C@"
 	PinchingHand   EmojiWithTone = "\U0001F90F@"
 	VictoryHand    EmojiWithTone = "\u270C\uFE0F@"
@@ -199,6 +216,7 @@ const (
 	CallMeHand     EmojiWithTone = "\U0001F919@"
 
 	// ## SUBGROUP: HAND-SINGLE-FINGER #####
+
 	BackhandIndexPointingLeft  EmojiWithTone = "\U0001F448@"
 	BackhandIndexPointingRight EmojiWithTone = "\U0001F449@"
 	BackhandIndexPointingUp    EmojiWithTone = "\U0001F446@"
@@ -207,6 +225,7 @@ const (
 	IndexPointingUp            EmojiWithTone = "\u261D\uFE0F@"
 
 	// ## SUBGROUP: HAND-FINGERS-CLOSED #####
+
 	ThumbsUp        EmojiWithTone = "\U0001F44D@"
 	ThumbsDown      EmojiWithTone = "\U0001F44E@"
 	RaisedFist      EmojiWithTone = "\u270A@"
@@ -215,6 +234,7 @@ const (
 	RightFacingFist EmojiWithTone = "\U0001F91C@"
 
 	// ## SUBGROUP: HANDS #####
+
 	ClappingHands   EmojiWithTone = "\U0001F44F@"
 	RaisingHands    EmojiWithTone = "\U0001F64C@"
 	OpenHands       EmojiWithTone = "\U0001F450@"
@@ -223,11 +243,13 @@ const (
 	FoldedHands     EmojiWithTone = "\U0001F64F@"
 
 	// ## SUBGROUP: HAND-PROP #####
+
 	WritingHand EmojiWithTone = "\u270D\uFE0F@"
 	NailPolish  EmojiWithTone = "\U0001F485@"
 	Selfie      EmojiWithTone = "\U0001F933@"
 
 	// ## SUBGROUP: BODY-PARTS #####
+
 	FlexedBiceps      EmojiWithTone = "\U0001F4AA@"
 	MechanicalArm     Emoji         = "\U0001F9BE"
 	MechanicalLeg     Emoji         = "\U0001F9BF"
@@ -245,6 +267,7 @@ const (
 	Mouth             Emoji         = "\U0001F444"
 
 	// ## SUBGROUP: PERSON #####
+
 	Baby            EmojiWithTone = "\U0001F476@"
 	Child           EmojiWithTone = "\U0001F9D2@"
 	Boy             EmojiWithTone = "\U0001F466@"
@@ -269,6 +292,7 @@ const (
 	OldWoman        EmojiWithTone = "\U0001F475@"
 
 	// ## SUBGROUP: PERSON-GESTURE #####
+
 	PersonFrowning    EmojiWithTone = "\U0001F64D@"
 	ManFrowning       EmojiWithTone = "\U0001F64D@\u200D\u2642\uFE0F"
 	WomanFrowning     EmojiWithTone = "\U0001F64D@\u200D\u2640\uFE0F"
@@ -301,6 +325,7 @@ const (
 	WomanShrugging    EmojiWithTone = "\U0001F937@\u200D\u2640\uFE0F"
 
 	// ## SUBGROUP: PERSON-ROLE #####
+
 	ManHealthWorker         EmojiWithTone = "\U0001F468@\u200D\u2695\uFE0F"
 	WomanHealthWorker       EmojiWithTone = "\U0001F469@\u200D\u2695\uFE0F"
 	ManStudent              EmojiWithTone = "\U0001F468@\u200D\U0001F393"
@@ -358,6 +383,7 @@ const (
 	BreastFeeding           EmojiWithTone = "\U0001F931@"
 
 	// ## SUBGROUP: PERSON-FANTASY #####
+
 	BabyAngel         EmojiWithTone = "\U0001F47C@"
 	SantaClaus        EmojiWithTone = "\U0001F385@"
 	MrsClaus          EmojiWithTone = "\U0001F936@"
@@ -390,6 +416,7 @@ const (
 	WomanZombie       Emoji         = "\U0001F9DF\u200D\u2640\uFE0F"
 
 	// ## SUBGROUP: PERSON-ACTIVITY #####
+
 	PersonGettingMassage       EmojiWithTone = "\U0001F486@"
 	ManGettingMassage          EmojiWithTone = "\U0001F486@\u200D\u2642\uFE0F"
 	WomanGettingMassage        EmojiWithTone = "\U0001F486@\u200D\u2640\uFE0F"
@@ -428,6 +455,7 @@ const (
 	WomanClimbing              EmojiWithTone = "\U0001F9D7@\u200D\u2640\uFE0F"
 
 	// ## SUBGROUP: PERSON-SPORT #####
+
 	PersonFencing          Emoji         = "\U0001F93A"
 	HorseRacing            EmojiWithTone = "\U0001F3C7@"
 	Skier                  Emoji         = "\u26F7\uFE0F"
@@ -473,6 +501,7 @@ const (
 	WomanJuggling          EmojiWithTone = "\U0001F939@\u200D\u2640\uFE0F"
 
 	// ## SUBGROUP: PERSON-RESTING #####
+
 	PersonInLotusPosition EmojiWithTone = "\U0001F9D8@"
 	ManInLotusPosition    EmojiWithTone = "\U0001F9D8@\u200D\u2642\uFE0F"
 	WomanInLotusPosition  EmojiWithTone = "\U0001F9D8@\u200D\u2640\uFE0F"
@@ -480,6 +509,7 @@ const (
 	PersonInBed           EmojiWithTone = "\U0001F6CC@"
 
 	// ## SUBGROUP: FAMILY #####
+
 	PeopleHoldingHands                 EmojiWithTone = "\U0001F9D1@\u200D\U0001F91D\u200D\U0001F9D1@"
 	WomenHoldingHands                  EmojiWithTone = "\U0001F46D@"
 	WomenHoldingHandsWithTwoTone       EmojiWithTone = "\U0001F469@\u200D\U0001F91D\u200D\U0001F469@"
@@ -523,6 +553,7 @@ const (
 	FamilyWomanGirlGirl                Emoji         = "\U0001F469\u200D\U0001F467\u200D\U0001F467"
 
 	// ## SUBGROUP: PERSON-SYMBOL #####
+
 	SpeakingHead      Emoji = "\U0001F5E3\uFE0F"
 	BustInSilhouette  Emoji = "\U0001F464"
 	BustsInSilhouette Emoji = "\U0001F465"
@@ -530,6 +561,7 @@ const (
 
 	// # GROUP: COMPONENT #####
 	// ## SUBGROUP: SKIN-TONE #####
+
 	LightSkinTone       Emoji = "\U0001F3FB"
 	MediumLightSkinTone Emoji = "\U0001F3FC"
 	MediumSkinTone      Emoji = "\U0001F3FD"
@@ -537,6 +569,7 @@ const (
 	DarkSkinTone        Emoji = "\U0001F3FF"
 
 	// ## SUBGROUP: HAIR-STYLE #####
+
 	RedHair   Emoji = "\U0001F9B0"
 	CurlyHair Emoji = "\U0001F9B1"
 	WhiteHair Emoji = "\U0001F9B3"
@@ -544,6 +577,7 @@ const (
 
 	// # GROUP: ANIMALS & NATURE #####
 	// ## SUBGROUP: ANIMAL-MAMMAL #####
+
 	MonkeyFace   Emoji = "\U0001F435"
 	Monkey       Emoji = "\U0001F412"
 	Gorilla      Emoji = "\U0001F98D"
@@ -605,6 +639,7 @@ const (
 	PawPrints    Emoji = "\U0001F43E"
 
 	// ## SUBGROUP: ANIMAL-BIRD #####
+
 	Turkey               Emoji = "\U0001F983"
 	Chicken              Emoji = "\U0001F414"
 	Rooster              Emoji = "\U0001F413"
@@ -623,9 +658,11 @@ const (
 	Parrot               Emoji = "\U0001F99C"
 
 	// ## SUBGROUP: ANIMAL-AMPHIBIAN #####
+
 	Frog Emoji = "\U0001F438"
 
 	// ## SUBGROUP: ANIMAL-REPTILE #####
+
 	Crocodile  Emoji = "\U0001F40A"
 	Turtle     Emoji = "\U0001F422"
 	Lizard     Emoji = "\U0001F98E"
@@ -636,6 +673,7 @@ const (
 	TRex       Emoji = "\U0001F996"
 
 	// ## SUBGROUP: ANIMAL-MARINE #####
+
 	SpoutingWhale Emoji = "\U0001F433"
 	Whale         Emoji = "\U0001F40B"
 	Dolphin       Emoji = "\U0001F42C"
@@ -647,6 +685,7 @@ const (
 	SpiralShell   Emoji = "\U0001F41A"
 
 	// ## SUBGROUP: ANIMAL-BUG #####
+
 	Snail      Emoji = "\U0001F40C"
 	Butterfly  Emoji = "\U0001F98B"
 	Bug        Emoji = "\U0001F41B"
@@ -661,6 +700,7 @@ const (
 	Microbe    Emoji = "\U0001F9A0"
 
 	// ## SUBGROUP: PLANT-FLOWER #####
+
 	Bouquet       Emoji = "\U0001F490"
 	CherryBlossom Emoji = "\U0001F338"
 	WhiteFlower   Emoji = "\U0001F4AE"
@@ -673,6 +713,7 @@ const (
 	Tulip         Emoji = "\U0001F337"
 
 	// ## SUBGROUP: PLANT-OTHER #####
+
 	Seedling             Emoji = "\U0001F331"
 	EvergreenTree        Emoji = "\U0001F332"
 	DeciduousTree        Emoji = "\U0001F333"
@@ -688,6 +729,7 @@ const (
 
 	// # GROUP: FOOD & DRINK #####
 	// ## SUBGROUP: FOOD-FRUIT #####
+
 	Grapes     Emoji = "\U0001F347"
 	Melon      Emoji = "\U0001F348"
 	Watermelon Emoji = "\U0001F349"
@@ -707,6 +749,7 @@ const (
 	Coconut    Emoji = "\U0001F965"
 
 	// ## SUBGROUP: FOOD-VEGETABLE #####
+
 	Avocado    Emoji = "\U0001F951"
 	Eggplant   Emoji = "\U0001F346"
 	Potato     Emoji = "\U0001F954"
@@ -723,6 +766,7 @@ const (
 	Chestnut   Emoji = "\U0001F330"
 
 	// ## SUBGROUP: FOOD-PREPARED #####
+
 	Bread            Emoji = "\U0001F35E"
 	Croissant        Emoji = "\U0001F950"
 	BaguetteBread    Emoji = "\U0001F956"
@@ -756,6 +800,7 @@ const (
 	CannedFood       Emoji = "\U0001F96B"
 
 	// ## SUBGROUP: FOOD-ASIAN #####
+
 	BentoBox           Emoji = "\U0001F371"
 	RiceCracker        Emoji = "\U0001F358"
 	RiceBall           Emoji = "\U0001F359"
@@ -775,6 +820,7 @@ const (
 	TakeoutBox         Emoji = "\U0001F961"
 
 	// ## SUBGROUP: FOOD-MARINE #####
+
 	Crab    Emoji = "\U0001F980"
 	Lobster Emoji = "\U0001F99E"
 	Shrimp  Emoji = "\U0001F990"
@@ -782,6 +828,7 @@ const (
 	Oyster  Emoji = "\U0001F9AA"
 
 	// ## SUBGROUP: FOOD-SWEET #####
+
 	SoftIceCream Emoji = "\U0001F366"
 	ShavedIce    Emoji = "\U0001F367"
 	IceCream     Emoji = "\U0001F368"
@@ -798,6 +845,7 @@ const (
 	HoneyPot     Emoji = "\U0001F36F"
 
 	// ## SUBGROUP: DRINK #####
+
 	BabyBottle            Emoji = "\U0001F37C"
 	GlassOfMilk           Emoji = "\U0001F95B"
 	HotBeverage           Emoji = "\u2615"
@@ -817,6 +865,7 @@ const (
 	IceCube               Emoji = "\U0001F9CA"
 
 	// ## SUBGROUP: DISHWARE #####
+
 	Chopsticks            Emoji = "\U0001F962"
 	ForkAndKnifeWithPlate Emoji = "\U0001F37D\uFE0F"
 	ForkAndKnife          Emoji = "\U0001F374"
@@ -826,6 +875,7 @@ const (
 
 	// # GROUP: TRAVEL & PLACES #####
 	// ## SUBGROUP: PLACE-MAP #####
+
 	GlobeShowingEuropeAfrica  Emoji = "\U0001F30D"
 	GlobeShowingAmericas      Emoji = "\U0001F30E"
 	GlobeShowingAsiaAustralia Emoji = "\U0001F30F"
@@ -835,6 +885,7 @@ const (
 	Compass                   Emoji = "\U0001F9ED"
 
 	// ## SUBGROUP: PLACE-GEOGRAPHIC #####
+
 	SnowCappedMountain Emoji = "\U0001F3D4\uFE0F"
 	Mountain           Emoji = "\u26F0\uFE0F"
 	Volcano            Emoji = "\U0001F30B"
@@ -846,6 +897,7 @@ const (
 	NationalPark       Emoji = "\U0001F3DE\uFE0F"
 
 	// ## SUBGROUP: PLACE-BUILDING #####
+
 	Stadium              Emoji = "\U0001F3DF\uFE0F"
 	ClassicalBuilding    Emoji = "\U0001F3DB\uFE0F"
 	BuildingConstruction Emoji = "\U0001F3D7\uFE0F"
@@ -872,6 +924,7 @@ const (
 	StatueOfLiberty      Emoji = "\U0001F5FD"
 
 	// ## SUBGROUP: PLACE-RELIGIOUS #####
+
 	Church       Emoji = "\u26EA"
 	Mosque       Emoji = "\U0001F54C"
 	HinduTemple  Emoji = "\U0001F6D5"
@@ -880,6 +933,7 @@ const (
 	Kaaba        Emoji = "\U0001F54B"
 
 	// ## SUBGROUP: PLACE-OTHER #####
+
 	Fountain             Emoji = "\u26F2"
 	Tent                 Emoji = "\u26FA"
 	Foggy                Emoji = "\U0001F301"
@@ -898,6 +952,7 @@ const (
 	CircusTent           Emoji = "\U0001F3AA"
 
 	// ## SUBGROUP: TRANSPORT-GROUND #####
+
 	Locomotive             Emoji = "\U0001F682"
 	RailwayCar             Emoji = "\U0001F683"
 	HighSpeedTrain         Emoji = "\U0001F684"
@@ -947,6 +1002,7 @@ const (
 	Construction           Emoji = "\U0001F6A7"
 
 	// ## SUBGROUP: TRANSPORT-WATER #####
+
 	Anchor        Emoji = "\u2693"
 	Sailboat      Emoji = "\u26F5"
 	Canoe         Emoji = "\U0001F6F6"
@@ -957,6 +1013,7 @@ const (
 	Ship          Emoji = "\U0001F6A2"
 
 	// ## SUBGROUP: TRANSPORT-AIR #####
+
 	Airplane          Emoji = "\u2708\uFE0F"
 	SmallAirplane     Emoji = "\U0001F6E9\uFE0F"
 	AirplaneDeparture Emoji = "\U0001F6EB"
@@ -972,10 +1029,12 @@ const (
 	FlyingSaucer      Emoji = "\U0001F6F8"
 
 	// ## SUBGROUP: HOTEL #####
+
 	BellhopBell Emoji = "\U0001F6CE\uFE0F"
 	Luggage     Emoji = "\U0001F9F3"
 
 	// ## SUBGROUP: TIME #####
+
 	HourglassDone    Emoji = "\u231B"
 	HourglassNotDone Emoji = "\u23F3"
 	Watch            Emoji = "\u231A"
@@ -1009,6 +1068,7 @@ const (
 	ElevenThirty     Emoji = "\U0001F566"
 
 	// ## SUBGROUP: SKY & WEATHER #####
+
 	NewMoon                   Emoji = "\U0001F311"
 	WaxingCrescentMoon        Emoji = "\U0001F312"
 	FirstQuarterMoon          Emoji = "\U0001F313"
@@ -1058,8 +1118,8 @@ const (
 	WaterWave                 Emoji = "\U0001F30A"
 
 	// # GROUP: ACTIVITIES #####
-
 	// ## SUBGROUP: EVENT #####
+
 	JackOLantern        Emoji = "\U0001F383"
 	ChristmasTree       Emoji = "\U0001F384"
 	Fireworks           Emoji = "\U0001F386"
@@ -1083,6 +1143,7 @@ const (
 	Ticket              Emoji = "\U0001F3AB"
 
 	// ## SUBGROUP: AWARD-MEDAL #####
+
 	MilitaryMedal    Emoji = "\U0001F396\uFE0F"
 	Trophy           Emoji = "\U0001F3C6"
 	SportsMedal      Emoji = "\U0001F3C5"
@@ -1091,6 +1152,7 @@ const (
 	ThirdPlaceMedal  Emoji = "\U0001F949"
 
 	// ## SUBGROUP: SPORT #####
+
 	SoccerBall         Emoji = "\u26BD"
 	Baseball           Emoji = "\u26BE"
 	Softball           Emoji = "\U0001F94E"
@@ -1120,10 +1182,11 @@ const (
 	CurlingStone       Emoji = "\U0001F94C"
 
 	// ## SUBGROUP: GAME #####
+
 	DirectHit          Emoji = "\U0001F3AF"
 	YoYo               Emoji = "\U0001FA80"
 	Kite               Emoji = "\U0001FA81"
-	POOL_8Ball         Emoji = "\U0001F3B1"
+	Pool8Ball          Emoji = "\U0001F3B1"
 	CrystalBall        Emoji = "\U0001F52E"
 	NazarAmulet        Emoji = "\U0001F9FF"
 	VideoGame          Emoji = "\U0001F3AE"
@@ -1142,6 +1205,7 @@ const (
 	FlowerPlayingCards Emoji = "\U0001F3B4"
 
 	// ## SUBGROUP: ARTS & CRAFTS #####
+
 	PerformingArts Emoji = "\U0001F3AD"
 	FramedPicture  Emoji = "\U0001F5BC\uFE0F"
 	ArtistPalette  Emoji = "\U0001F3A8"
@@ -1150,6 +1214,7 @@ const (
 
 	// # GROUP: OBJECTS #####
 	// ## SUBGROUP: CLOTHING #####
+
 	Glasses             Emoji = "\U0001F453"
 	Sunglasses          Emoji = "\U0001F576\uFE0F"
 	Goggles             Emoji = "\U0001F97D"
@@ -1195,6 +1260,7 @@ const (
 	GemStone            Emoji = "\U0001F48E"
 
 	// ## SUBGROUP: SOUND #####
+
 	MutedSpeaker        Emoji = "\U0001F507"
 	SpeakerLowVolume    Emoji = "\U0001F508"
 	SpeakerMediumVolume Emoji = "\U0001F509"
@@ -1206,6 +1272,7 @@ const (
 	BellWithSlash       Emoji = "\U0001F515"
 
 	// ## SUBGROUP: MUSIC #####
+
 	MusicalScore     Emoji = "\U0001F3BC"
 	MusicalNote      Emoji = "\U0001F3B5"
 	MusicalNotes     Emoji = "\U0001F3B6"
@@ -1217,6 +1284,7 @@ const (
 	Radio            Emoji = "\U0001F4FB"
 
 	// ## SUBGROUP: MUSICAL-INSTRUMENT #####
+
 	Saxophone       Emoji = "\U0001F3B7"
 	Guitar          Emoji = "\U0001F3B8"
 	MusicalKeyboard Emoji = "\U0001F3B9"
@@ -1226,6 +1294,7 @@ const (
 	Drum            Emoji = "\U0001F941"
 
 	// ## SUBGROUP: PHONE #####
+
 	MobilePhone          Emoji = "\U0001F4F1"
 	MobilePhoneWithArrow Emoji = "\U0001F4F2"
 	Telephone            Emoji = "\u260E\uFE0F"
@@ -1234,6 +1303,7 @@ const (
 	FaxMachine           Emoji = "\U0001F4E0"
 
 	// ## SUBGROUP: COMPUTER #####
+
 	Battery         Emoji = "\U0001F50B"
 	ElectricPlug    Emoji = "\U0001F50C"
 	LaptopComputer  Emoji = "\U0001F4BB"
@@ -1249,6 +1319,7 @@ const (
 	Abacus          Emoji = "\U0001F9EE"
 
 	// ## SUBGROUP: LIGHT & VIDEO #####
+
 	MovieCamera                Emoji = "\U0001F3A5"
 	FilmFrames                 Emoji = "\U0001F39E\uFE0F"
 	FilmProjector              Emoji = "\U0001F4FD\uFE0F"
@@ -1267,6 +1338,7 @@ const (
 	DiyaLamp                   Emoji = "\U0001FA94"
 
 	// ## SUBGROUP: BOOK-PAPER #####
+
 	NotebookWithDecorativeCover Emoji = "\U0001F4D4"
 	ClosedBook                  Emoji = "\U0001F4D5"
 	OpenBook                    Emoji = "\U0001F4D6"
@@ -1286,6 +1358,7 @@ const (
 	Label                       Emoji = "\U0001F3F7\uFE0F"
 
 	// ## SUBGROUP: MONEY #####
+
 	MoneyBag               Emoji = "\U0001F4B0"
 	YenBanknote            Emoji = "\U0001F4B4"
 	DollarBanknote         Emoji = "\U0001F4B5"
@@ -1299,6 +1372,7 @@ const (
 	HeavyDollarSign        Emoji = "\U0001F4B2"
 
 	// ## SUBGROUP: MAIL #####
+
 	Envelope                     Emoji = "\u2709\uFE0F"
 	EMail                        Emoji = "\U0001F4E7"
 	IncomingEnvelope             Emoji = "\U0001F4E8"
@@ -1314,6 +1388,7 @@ const (
 	BallotBoxWithBallot          Emoji = "\U0001F5F3\uFE0F"
 
 	// ## SUBGROUP: WRITING #####
+
 	Pencil      Emoji = "\u270F\uFE0F"
 	BlackNib    Emoji = "\u2712\uFE0F"
 	FountainPen Emoji = "\U0001F58B\uFE0F"
@@ -1323,6 +1398,7 @@ const (
 	Memo        Emoji = "\U0001F4DD"
 
 	// ## SUBGROUP: OFFICE #####
+
 	Briefcase         Emoji = "\U0001F4BC"
 	FileFolder        Emoji = "\U0001F4C1"
 	OpenFileFolder    Emoji = "\U0001F4C2"
@@ -1348,6 +1424,7 @@ const (
 	Wastebasket       Emoji = "\U0001F5D1\uFE0F"
 
 	// ## SUBGROUP: LOCK #####
+
 	Locked        Emoji = "\U0001F512"
 	Unlocked      Emoji = "\U0001F513"
 	LockedWithPen Emoji = "\U0001F50F"
@@ -1356,6 +1433,7 @@ const (
 	OldKey        Emoji = "\U0001F5DD\uFE0F"
 
 	// ## SUBGROUP: TOOL #####
+
 	Hammer          Emoji = "\U0001F528"
 	Axe             Emoji = "\U0001FA93"
 	Pick            Emoji = "\u26CF\uFE0F"
@@ -1378,6 +1456,7 @@ const (
 	Magnet          Emoji = "\U0001F9F2"
 
 	// ## SUBGROUP: SCIENCE #####
+
 	Alembic          Emoji = "\u2697\uFE0F"
 	TestTube         Emoji = "\U0001F9EA"
 	PetriDish        Emoji = "\U0001F9EB"
@@ -1387,6 +1466,7 @@ const (
 	SatelliteAntenna Emoji = "\U0001F4E1"
 
 	// ## SUBGROUP: MEDICAL #####
+
 	Syringe         Emoji = "\U0001F489"
 	DropOfBlood     Emoji = "\U0001FA78"
 	Pill            Emoji = "\U0001F48A"
@@ -1394,6 +1474,7 @@ const (
 	Stethoscope     Emoji = "\U0001FA7A"
 
 	// ## SUBGROUP: HOUSEHOLD #####
+
 	Door             Emoji = "\U0001F6AA"
 	Bed              Emoji = "\U0001F6CF\uFE0F"
 	CouchAndLamp     Emoji = "\U0001F6CB\uFE0F"
@@ -1413,6 +1494,7 @@ const (
 	ShoppingCart     Emoji = "\U0001F6D2"
 
 	// ## SUBGROUP: OTHER-OBJECT #####
+
 	Cigarette  Emoji = "\U0001F6AC"
 	Coffin     Emoji = "\u26B0\uFE0F"
 	FuneralUrn Emoji = "\u26B1\uFE0F"
@@ -1420,6 +1502,7 @@ const (
 
 	// # GROUP: SYMBOLS #####
 	// ## SUBGROUP: TRANSPORT-SIGN #####
+
 	AtmSign          Emoji = "\U0001F3E7"
 	LitterInBinSign  Emoji = "\U0001F6AE"
 	PotableWater     Emoji = "\U0001F6B0"
@@ -1435,6 +1518,7 @@ const (
 	LeftLuggage      Emoji = "\U0001F6C5"
 
 	// ## SUBGROUP: WARNING #####
+
 	Warning            Emoji = "\u26A0\uFE0F"
 	ChildrenCrossing   Emoji = "\U0001F6B8"
 	NoEntry            Emoji = "\u26D4"
@@ -1450,6 +1534,7 @@ const (
 	Biohazard          Emoji = "\u2623\uFE0F"
 
 	// ## SUBGROUP: ARROW #####
+
 	UpArrow                      Emoji = "\u2B06\uFE0F"
 	UpRightArrow                 Emoji = "\u2197\uFE0F"
 	RightArrow                   Emoji = "\u27A1\uFE0F"
@@ -1473,6 +1558,7 @@ const (
 	TopArrow                     Emoji = "\U0001F51D"
 
 	// ## SUBGROUP: RELIGION #####
+
 	PlaceOfWorship       Emoji = "\U0001F6D0"
 	AtomSymbol           Emoji = "\u269B\uFE0F"
 	Om                   Emoji = "\U0001F549\uFE0F"
@@ -1487,6 +1573,7 @@ const (
 	DottedSixPointedStar Emoji = "\U0001F52F"
 
 	// ## SUBGROUP: ZODIAC #####
+
 	Aries       Emoji = "\u2648"
 	Taurus      Emoji = "\u2649"
 	Gemini      Emoji = "\u264A"
@@ -1502,6 +1589,7 @@ const (
 	Ophiuchus   Emoji = "\u26CE"
 
 	// ## SUBGROUP: AV-SYMBOL #####
+
 	ShuffleTracksButton Emoji = "\U0001F500"
 	RepeatButton        Emoji = "\U0001F501"
 	RepeatSingleButton  Emoji = "\U0001F502"
@@ -1528,10 +1616,12 @@ const (
 	MobilePhoneOff      Emoji = "\U0001F4F4"
 
 	// ## SUBGROUP: GENDER #####
+
 	FemaleSign Emoji = "\u2640\uFE0F"
 	MaleSign   Emoji = "\u2642\uFE0F"
 
 	// ## SUBGROUP: OTHER-SYMBOL #####
+
 	MedicalSymbol             Emoji = "\u2695\uFE0F"
 	Infinity                  Emoji = "\u267E\uFE0F"
 	RecyclingSymbol           Emoji = "\u267B\uFE0F"
@@ -1567,21 +1657,23 @@ const (
 	TradeMark                 Emoji = "\u2122\uFE0F"
 
 	// ## SUBGROUP: KEYCAP #####
+
 	KeycapHash     Emoji = "\u0023\uFE0F\u20E3"
 	KeycapAsterisk Emoji = "\u002A\uFE0F\u20E3"
-	KEYCAP_0       Emoji = "\u0030\uFE0F\u20E3"
-	KEYCAP_1       Emoji = "\u0031\uFE0F\u20E3"
-	KEYCAP_2       Emoji = "\u0032\uFE0F\u20E3"
-	KEYCAP_3       Emoji = "\u0033\uFE0F\u20E3"
-	KEYCAP_4       Emoji = "\u0034\uFE0F\u20E3"
-	KEYCAP_5       Emoji = "\u0035\uFE0F\u20E3"
-	KEYCAP_6       Emoji = "\u0036\uFE0F\u20E3"
-	KEYCAP_7       Emoji = "\u0037\uFE0F\u20E3"
-	KEYCAP_8       Emoji = "\u0038\uFE0F\u20E3"
-	KEYCAP_9       Emoji = "\u0039\uFE0F\u20E3"
-	KEYCAP_10      Emoji = "\U0001F51F"
+	Keycap0        Emoji = "\u0030\uFE0F\u20E3"
+	Keycap1        Emoji = "\u0031\uFE0F\u20E3"
+	Keycap2        Emoji = "\u0032\uFE0F\u20E3"
+	Keycap3        Emoji = "\u0033\uFE0F\u20E3"
+	Keycap4        Emoji = "\u0034\uFE0F\u20E3"
+	Keycap5        Emoji = "\u0035\uFE0F\u20E3"
+	Keycap6        Emoji = "\u0036\uFE0F\u20E3"
+	Keycap7        Emoji = "\u0037\uFE0F\u20E3"
+	Keycap8        Emoji = "\u0038\uFE0F\u20E3"
+	Keycap9        Emoji = "\u0039\uFE0F\u20E3"
+	Keycap10       Emoji = "\U0001F51F"
 
 	// ## SUBGROUP: ALPHANUM #####
+
 	InputLatinUppercase           Emoji = "\U0001F520"
 	InputLatinLowercase           Emoji = "\U0001F521"
 	InputNumbers                  Emoji = "\U0001F522"
@@ -1623,6 +1715,7 @@ const (
 	JapaneseNoVacancyButton       Emoji = "\U0001F235"
 
 	// ## SUBGROUP: GEOMETRIC #####
+
 	RedCircle              Emoji = "\U0001F534"
 	OrangeCircle           Emoji = "\U0001F7E0"
 	YellowCircle           Emoji = "\U0001F7E1"
@@ -1660,6 +1753,7 @@ const (
 
 	// # GROUP: FLAGS #####
 	// ## SUBGROUP: FLAG #####
+
 	ChequeredFlag  Emoji = "\U0001F3C1"
 	TriangularFlag Emoji = "\U0001F6A9"
 	CrossedFlags   Emoji = "\U0001F38C"
@@ -1669,6 +1763,7 @@ const (
 	PirateFlag     Emoji = "\U0001F3F4\u200D\u2620\uFE0F"
 
 	// ## SUBGROUP: COUNTRY-FLAG #####
+
 	FlagsForFlagAscensionIsland                     Emoji = "\U0001F1E6\U0001F1E8"
 	FlagsForFlagAndorra                             Emoji = "\U0001F1E6\U0001F1E9"
 	FlagsForFlagUnitedArabEmirates                  Emoji = "\U0001F1E6\U0001F1EA"
@@ -1929,6 +2024,7 @@ const (
 	FlagsForFlagZimbabwe                            Emoji = "\U0001F1FF\U0001F1FC"
 
 	// ## SUBGROUP: SUBDIVISION-FLAG #####
+
 	FlagsForFlagEngland  Emoji = "\U0001F3F4\U000E0067\U000E0062\U000E0065\U000E006E\U000E0067\U000E007F"
 	FlagsForFlagScotland Emoji = "\U0001F3F4\U000E0067\U000E0062\U000E0073\U000E0063\U000E0074\U000E007F"
 	FlagsForFlagWales    Emoji = "\U0001F3F4\U000E0067\U000E0062\U000E0077\U000E006C\U000E0073\U000E007F"
