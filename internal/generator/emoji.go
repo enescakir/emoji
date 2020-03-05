@@ -19,15 +19,6 @@ type groups struct {
 	Groups []*group
 }
 
-func (g *groups) Template() string {
-	r := ""
-	for _, grp := range g.Groups {
-		r += grp.Template()
-	}
-
-	return r
-}
-
 func (g *groups) Append(grpName string) *group {
 	// fmt.Printf("group: %v\n", grpName)
 	grp := group{Name: grpName}
@@ -39,15 +30,6 @@ func (g *groups) Append(grpName string) *group {
 type group struct {
 	Name      string
 	Subgroups []*subgroup
-}
-
-func (g *group) Template() string {
-	r := fmt.Sprintf("\n// GROUP: %v\n", g.Name)
-	for _, subs := range g.Subgroups {
-		r += subs.Template()
-	}
-
-	return r
 }
 
 func (g *group) Append(subgrpName string) *subgroup {
@@ -62,30 +44,6 @@ type subgroup struct {
 	Name      string
 	Emojis    map[string][]emoji
 	Constants []string
-}
-
-func (s *subgroup) Template() string {
-	r := fmt.Sprintf("// SUBGROUP: %v\n", s.Name)
-	for _, c := range s.Constants {
-		if len(s.Emojis[c]) > 1 {
-			for _, e := range s.Emojis[c] {
-				fmt.Printf("%+q | %v | %v\n", replaceTones(e.Code), e.Name, e.Tones)
-			}
-			fmt.Println()
-		}
-
-		r += s.Emojis[c][0].Template()
-	}
-
-	return r
-}
-
-func replaceTones(str string) string {
-	for _, tone := range []emojipkg.Tone{emojipkg.Light, emojipkg.MediumLight, emojipkg.Medium, emojipkg.MediumDark, emojipkg.Dark} {
-		str = strings.ReplaceAll(str, tone.String(), "@")
-	}
-
-	return str
 }
 
 func (s *subgroup) Append(e emoji) {
@@ -107,10 +65,6 @@ type emoji struct {
 
 func (e *emoji) String() string {
 	return fmt.Sprintf("name:%v, constant:%v, code:%v, tones: %v\n", e.Name, e.Constant, e.Code, e.Tones)
-}
-
-func (e *emoji) Template() string {
-	return fmt.Sprintf("%s Emoji = %+q // %s\n", e.Constant, e.Code, e.Name)
 }
 
 func newEmoji(line string) *emoji {
@@ -177,4 +131,33 @@ func (e *emoji) generateUnicode() {
 		unicodes = append(unicodes, string(u))
 	}
 	e.Code = strings.Join(unicodes, "")
+}
+
+func defaultTone(basic, toned string) string {
+	toneInd := strings.IndexRune(toned, []rune(emojipkg.TonePlaceholder)[0])
+	for i, ch := range basic {
+		if i != toneInd {
+			continue
+		}
+		if ch == '\ufe0f' {
+			return "\ufe0f"
+		}
+		break
+	}
+
+	return ""
+}
+
+func replaceTones(code string) string {
+	for _, tone := range []emojipkg.Tone{
+		emojipkg.Light,
+		emojipkg.MediumLight,
+		emojipkg.Medium,
+		emojipkg.MediumDark,
+		emojipkg.Dark,
+	} {
+		code = strings.ReplaceAll(code, tone.String(), emojipkg.TonePlaceholder)
+	}
+
+	return code
 }

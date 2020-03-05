@@ -19,19 +19,21 @@ const (
 )
 
 func main() {
-	emojis, err := getEmojis()
+	emojis, err := fetch()
 	if err != nil {
 		panic(err)
 	}
 
-	if err = generateFile(emojis); err != nil {
+	constants := generate(emojis)
+
+	if err = save(constants); err != nil {
 		panic(err)
 	}
 }
 
-func getEmojis() (*groups, error) {
+func fetch() (*groups, error) {
 	var emojis groups
-	b, err := getFile(emojiListUrl)
+	b, err := fetchData(emojiListUrl)
 	if err != nil {
 		return nil, err
 	}
@@ -61,20 +63,59 @@ func getEmojis() (*groups, error) {
 	return &emojis, nil
 }
 
-func generateFile(emojis *groups) error {
+func generate(emojis *groups) string {
+	var res string
+	for _, grp := range emojis.Groups {
+		res += fmt.Sprintf("\n// GROUP: %v\n", grp.Name)
+		for _, subgrp := range grp.Subgroups {
+			res += fmt.Sprintf("// SUBGROUP: %v\n", subgrp.Name)
+			for _, c := range subgrp.Constants {
+				res += emojiConstant(subgrp.Emojis[c])
+			}
+		}
+	}
+
+	return res
+}
+
+func emojiConstant(emojis []emoji) string {
+	basic := emojis[0]
+	switch len(emojis) {
+	case 1:
+		return fmt.Sprintf("%s Emoji = %+q // %s\n", basic.Constant, basic.Code, basic.Name)
+	case 6:
+		oneTonedCode := replaceTones(emojis[1].Code)
+		defaultTone := defaultTone(basic.Code, oneTonedCode)
+
+		if defaultTone != "" {
+			return fmt.Sprintf("%s EmojiWithTone = newEmojiWithTone(%+q).withDefaultTone(%+q) // %s\n", basic.Constant, oneTonedCode, defaultTone, basic.Name)
+		}
+
+		return fmt.Sprintf("%s EmojiWithTone = newEmojiWithTone(%+q) // %s\n", basic.Constant, oneTonedCode, basic.Name)
+	case 26:
+		oneTonedCode := replaceTones(emojis[1].Code)
+		twoTonedCode := replaceTones(emojis[2].Code)
+
+		return fmt.Sprintf("%s EmojiWithTone = newEmojiWithTone(%+q, %+q) // %s\n", basic.Constant, oneTonedCode, twoTonedCode, basic.Name)
+	default:
+		panic(fmt.Errorf("not expected emoji count for a constant: %v", len(emojis)))
+	}
+}
+
+func save(constants string) error {
 	tmpl, err := template.ParseFiles("internal/generator/constants.go.tmpl")
 	if err != nil {
 		return err
 	}
 
 	data := struct {
-		Link   string
-		Date   string
-		Emojis *groups
+		Link      string
+		Date      string
+		Constants string
 	}{
-		Link:   emojiListUrl,
-		Date:   time.Now().Format(time.RFC3339),
-		Emojis: emojis,
+		Link:      emojiListUrl,
+		Date:      time.Now().Format(time.RFC3339),
+		Constants: constants,
 	}
 	var w bytes.Buffer
 	if err = tmpl.Execute(&w, data); err != nil {
@@ -83,7 +124,7 @@ func generateFile(emojis *groups) error {
 
 	content, err := format.Source(w.Bytes())
 
-	file, err := os.Create("test.go")
+	file, err := os.Create("contants.go")
 	if err != nil {
 		return fmt.Errorf("could not create file: %v", err)
 	}
@@ -95,7 +136,7 @@ func generateFile(emojis *groups) error {
 	return nil
 }
 
-func getFile(url string) ([]byte, error) {
+func fetchData(url string) ([]byte, error) {
 	resp, err := http.Get(url)
 	if err != nil {
 		return nil, err
