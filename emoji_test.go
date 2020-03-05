@@ -13,7 +13,7 @@ func TestEmoji(t *testing.T) {
 		{input: EyeInSpeechBubble, expected: "\U0001F441\uFE0F\u200D\U0001F5E8\uFE0F"},
 		{input: ManGenie, expected: "\U0001F9DE\u200D\u2642\uFE0F"},
 		{input: Badger, expected: "\U0001F9A1"},
-		{input: FlagsForFlagTurkey, expected: "\U0001F1F9\U0001F1F7"},
+		{input: FlagForTurkey, expected: "\U0001F1F9\U0001F1F7"},
 	}
 
 	for i, tc := range tt {
@@ -47,15 +47,15 @@ func TestEmojiWithTone(t *testing.T) {
 	}
 }
 
-func TestEmojiWithToneTwo(t *testing.T) {
+func TestEmojiWithTones(t *testing.T) {
 	tt := []struct {
 		input    EmojiWithTone
 		tones    []Tone
 		expected string
 	}{
-		{input: WomanAndManHoldingHandsWithTwoTone, tones: []Tone{}, expected: "\U0001F469\u200D\U0001F91D\u200D\U0001F468"},
-		{input: WomanAndManHoldingHandsWithTwoTone, tones: []Tone{MediumLight}, expected: "\U0001F469\U0001F3FC\u200D\U0001F91D\u200D\U0001F468\U0001F3FC"},
-		{input: WomanAndManHoldingHandsWithTwoTone, tones: []Tone{Medium, Dark}, expected: "\U0001F469\U0001F3FD\u200D\U0001F91D\u200D\U0001F468\U0001F3FF"},
+		{input: WomanAndManHoldingHands, tones: []Tone{}, expected: "\U0001f46b"},
+		{input: WomanAndManHoldingHands, tones: []Tone{MediumLight}, expected: "\U0001f46b\U0001F3FC"},
+		{input: WomanAndManHoldingHands, tones: []Tone{Medium, Dark}, expected: "\U0001f469\U0001F3FD\u200d\U0001f91d\u200d\U0001f468\U0001F3FF"},
 	}
 
 	for i, tc := range tt {
@@ -71,10 +71,10 @@ func TestCountryFlag(t *testing.T) {
 		input    string
 		expected Emoji
 	}{
-		{input: "tr", expected: FlagsForFlagTurkey},
-		{input: "TR", expected: FlagsForFlagTurkey},
-		{input: "us", expected: FlagsForFlagUnitedStates},
-		{input: "gb", expected: FlagsForFlagUnitedKingdom},
+		{input: "tr", expected: FlagForTurkey},
+		{input: "TR", expected: FlagForTurkey},
+		{input: "us", expected: FlagForUnitedStates},
+		{input: "gb", expected: FlagForUnitedKingdom},
 	}
 
 	for i, tc := range tt {
@@ -120,7 +120,7 @@ func BenchmarkEmojiWithTone(b *testing.B) {
 
 func BenchmarkEmojiWithToneTwo(b *testing.B) {
 	for n := 0; n < b.N; n++ {
-		_ = WomanAndManHoldingHandsWithTwoTone.Tone(Medium, Dark)
+		_ = WomanAndManHoldingHands.Tone(Medium, Dark)
 	}
 }
 
