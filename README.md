@@ -70,10 +70,11 @@ go test
 ```
 
 ## Todo :pushpin:
-* Add emoji string replacer
+* Add emoji string parser
 
 ## Contributing :man_technologist:
-I am accepting PRs that add characters to the class.
+I am accepting PRs that add characters to the package.
+
 Please use [this list](http://unicode.org/emoji/charts/full-emoji-list.html) to look up the unicode value and the name of the character.
 
 ## Credits :star:
