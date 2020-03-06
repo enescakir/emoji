@@ -124,7 +124,7 @@ func save(constants string) error {
 
 	content, err := format.Source(w.Bytes())
 
-	file, err := os.Create("contants.go")
+	file, err := os.Create("constants.go")
 	if err != nil {
 		return fmt.Errorf("could not create file: %v", err)
 	}
