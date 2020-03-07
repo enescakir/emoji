@@ -19,7 +19,7 @@ func TestParse(t *testing.T) {
 			expected: "",
 		},
 		{
-			input:    " :pizza::sushi: \n mann :sweat:",
+			input:    " :pizza::sushi: \n mann :woman_golfing:",
 			expected: "",
 		},
 		{
