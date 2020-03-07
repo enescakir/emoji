@@ -119,7 +119,7 @@ func CountryFlag(code string) (Emoji, error) {
 	return Emoji(flag), nil
 }
 
-// countryCodeLetter shifts given letter byte as unicodeFlagBaseIndex and changes encoding
+// countryCodeLetter shifts given letter byte as unicodeFlagBaseIndex and changes encoding.
 func countryCodeLetter(l byte) string {
 	shifted := unicodeFlagBaseIndex + int(l)
 
