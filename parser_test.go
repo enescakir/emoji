@@ -12,44 +12,51 @@ func TestParse(t *testing.T) {
 	}{
 		{
 			input:    "I am :man_technologist: from :flag_for_turkey:. Tests are :thumbs_up:",
-			expected: "",
+			expected: fmt.Sprintf("I am %v from %v. Tests are %v", ManTechnologist, FlagForTurkey, ThumbsUp),
 		},
 		{
-			input:    "I love eating :pizza::sushi::sweat:",
-			expected: "",
+			input:    "consecutive emojis :pizza::sushi::sweat:",
+			expected: fmt.Sprintf("consecutive emojis %v%v%v", Pizza, Sushi, DowncastFaceWithSweat),
 		},
 		{
-			input:    " :pizza::sushi: \n mann :woman_golfing:",
-			expected: "",
+			input:    ":accordion::anguished_face: \n woman :woman_golfing:",
+			expected: fmt.Sprintf("%v%v \n woman %v", Accordion, AnguishedFace, WomanGolfing),
 		},
 		{
-			input:    ":pizza:sushi: mann :sweat:",
-			expected: "",
+			input:    "shared colon :angry_face_with_horns:anger_symbol:",
+			expected: fmt.Sprintf("shared colon %vanger_symbol:", AngryFaceWithHorns),
 		},
 		{
-			input:    ":piasfaf: not exist  :sweat:",
-			expected: "",
+			input:    ":not_exist_emoji: not exist emoji",
+			expected: ":not_exist_emoji: not exist emoji",
 		},
 		{
-			input:    ":pizza::",
-			expected: "",
+			input:    ":dragon::",
+			expected: fmt.Sprintf("%v:", Dragon),
 		},
 		{
-			input:    ":pizza:::",
-			expected: "",
+			input:    "::+1:",
+			expected: fmt.Sprintf(":%v", ThumbsUp),
 		},
 		{
-			input:    "afsaff",
-			expected: "",
+			input:    "::anchor::",
+			expected: fmt.Sprintf(":%v:", Anchor),
+		},
+		{
+			input:    ":anguished:::",
+			expected: fmt.Sprintf("%v::", AnguishedFace),
+		},
+		{
+			input:    "dummytext",
+			expected: "dummytext",
 		},
 	}
 
-	for _, tc := range tt {
-		fmt.Println(Parse(tc.input))
-		//got := tc.input
-		//if got != tc.expected {
-		//	t.Fatalf("test case %v fail: got: %v, expected: %v", i+1, got, tc.expected)
-		//}
+	for i, tc := range tt {
+		got := Parse(tc.input)
+		if got != tc.expected {
+			t.Fatalf("test case %v fail: got: %v, expected: %v", i+1, got, tc.expected)
+		}
 	}
 }
 

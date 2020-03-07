@@ -32,23 +32,31 @@ func Parse(input string) string {
 		}
 
 		// r is `:` now
-		matched.WriteRune(r)
-
-		// if matched only has `:`, it's the beginning of the emoji alias
-		if matched.Len() == 1 {
+		// if matched is empty, it's the beginning of the emoji alias
+		if matched.Len() == 0 {
+			matched.WriteRune(r)
 			continue
 		}
 
 		// it's the end of the emoji alias
-		alias := matched.String()
+		alias := matched.String() + ":"
+
 		code, ok := emojiMap[alias]
 		if ok {
 			output.WriteString(code)
+			matched.Reset()
 		} else {
 			// TODO: check for country codes: `flag-[a-z]{2}`
-			output.WriteString(alias)
+			output.WriteString(matched.String())
+			// it might be the beginning of the another emoji alias
+			matched.Reset()
+			matched.WriteRune(r)
 		}
+	}
 
+	// if matched not empty, add it to output
+	if matched.Len() != 0 {
+		output.WriteString(matched.String())
 		matched.Reset()
 	}
 
