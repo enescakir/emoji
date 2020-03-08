@@ -39,8 +39,8 @@ func main() {
 		emoji.PeopleHoldingHands.Tone(emoji.Medium),
 		emoji.PeopleHoldingHands.Tone(emoji.Light, emoji.Dark),
 	)
-    fmt.Println(emoji.Parse("Emoji aliases are :sunglasses:"))
-    emoji.Println("Use fmt wrappers :+1: with emoji support :tada:")
+	fmt.Println(emoji.Parse("Emoji aliases are :sunglasses:"))
+	emoji.Println("Use fmt wrappers :+1: with emoji support :tada:")
 }
 
 /* OUTPUT
@@ -57,8 +57,14 @@ func main() {
 ```
 
 This package contains emojis constants based on [Full Emoji List v13.0](https://unicode.org/Public/emoji/13.0/emoji-test.txt).
-
+```go
+    emoji.CallMeHand // 🤙
+```
 Also, it has additional emoji aliases from [github/gemoji](https://github.com/github/gemoji).
+```go
+    emoji.Parse(":+1:") // 👍
+    emoji.Parse(":100:") // 💯
+```
 
 Also, you can generate country flag emoji with [ISO 3166 Alpha2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes:
 ```go
