@@ -2,8 +2,13 @@ package emoji
 
 import (
 	"fmt"
+	"regexp"
 	"strings"
 	"unicode"
+)
+
+var (
+	flagRegex = regexp.MustCompile(`^:flag-([a-zA-Z]{2}):$`)
 )
 
 // Parse replaces emoji aliases (:pizza:) with unicode representation.
@@ -39,19 +44,29 @@ func Parse(input string) string {
 		}
 
 		// it's the end of the emoji alias
-		alias := matched.String() + ":"
+		match := matched.String()
+		alias := match + ":"
 
-		code, ok := emojiMap[alias]
-		if ok {
+		// check for emoji alias
+		if code, ok := emojiMap[alias]; ok {
 			output.WriteString(code)
 			matched.Reset()
-		} else {
-			// TODO: check for country codes: `flag-[a-z]{2}`
-			output.WriteString(matched.String())
-			// it might be the beginning of the another emoji alias
-			matched.Reset()
-			matched.WriteRune(r)
+			continue
 		}
+
+		// check for `flag-[CODE]` emoji
+		if flag := checkFlag(alias); len(flag) > 0 {
+			output.WriteString(flag)
+			matched.Reset()
+			continue
+		}
+
+		// not found any emoji
+		output.WriteString(match)
+		// it might be the beginning of the another emoji alias
+		matched.Reset()
+		matched.WriteRune(r)
+
 	}
 
 	// if matched not empty, add it to output
@@ -61,6 +76,17 @@ func Parse(input string) string {
 	}
 
 	return output.String()
+}
+
+// checkFlag finds flag emoji for `flag-[CODE]` pattern
+func checkFlag(alias string) string {
+	if matches := flagRegex.FindStringSubmatch(alias); len(matches) == 2 {
+		flag, _ := CountryFlag(matches[1])
+
+		return flag.String()
+	}
+
+	return ""
 }
 
 // Map returns the emojis map.

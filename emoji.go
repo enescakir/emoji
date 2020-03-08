@@ -2,14 +2,13 @@ package emoji
 
 import (
 	"fmt"
-	"html"
 	"strings"
 )
 
 // Base attributes
 const (
-	unicodeFlagBaseIndex = 127397
-	TonePlaceholder      = "@"
+	TonePlaceholder = "@"
+	flagBaseIndex   = '\U0001F1E6' - 'a'
 )
 
 // Skin tone colors
@@ -113,15 +112,13 @@ func CountryFlag(code string) (Emoji, error) {
 		return "", fmt.Errorf("not valid country code: %q", code)
 	}
 
-	code = strings.ToUpper(code)
+	code = strings.ToLower(code)
 	flag := countryCodeLetter(code[0]) + countryCodeLetter(code[1])
 
 	return Emoji(flag), nil
 }
 
-// countryCodeLetter shifts given letter byte as unicodeFlagBaseIndex and changes encoding.
+// countryCodeLetter shifts given letter byte as flagBaseIndex.
 func countryCodeLetter(l byte) string {
-	shifted := unicodeFlagBaseIndex + int(l)
-
-	return html.UnescapeString(fmt.Sprintf("&#%v;", shifted))
+	return string(rune(l) + flagBaseIndex)
 }

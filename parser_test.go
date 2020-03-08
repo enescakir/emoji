@@ -55,6 +55,14 @@ func TestParse(t *testing.T) {
 			expected: fmt.Sprintf("emoji with space :angry face_with_horns%v", AngerSymbol),
 		},
 		{
+			input:    "flag testing :flag-tr: done",
+			expected: fmt.Sprintf("flag testing %v done", FlagForTurkey),
+		},
+		{
+			input:    "not valid flags :flag-tra: :flag-t: testing",
+			expected: fmt.Sprintf("not valid flags :flag-tra: :flag-t: testing"),
+		},
+		{
 			input:    "dummytext",
 			expected: "dummytext",
 		},
