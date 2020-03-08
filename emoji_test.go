@@ -106,6 +106,28 @@ func TestCountryFlagError(t *testing.T) {
 	}
 }
 
+func TestNewEmojiTone(t *testing.T) {
+	tt := []struct {
+		input    []string
+		expected EmojiWithTone
+	}{
+		{input: nil, expected: EmojiWithTone{}},
+		{input: []string{}, expected: EmojiWithTone{}},
+		{input: []string{"\U0001f64b@"}, expected: PersonRaisingHand},
+		{
+			input:    []string{"\U0001f46b@", "\U0001f469@\u200d\U0001f91d\u200d\U0001f468@"},
+			expected: WomanAndManHoldingHands,
+		},
+	}
+
+	for i, tc := range tt {
+		got := newEmojiWithTone(tc.input...)
+		if got != tc.expected {
+			t.Fatalf("test case %v fail: got: %v, expected: %v", i+1, got, tc.expected)
+		}
+	}
+}
+
 func BenchmarkEmoji(b *testing.B) {
 	for n := 0; n < b.N; n++ {
 		_ = WavingHand.String()

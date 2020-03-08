@@ -82,8 +82,8 @@ func newEmoji(line string) *emoji {
 		Tones:    []string{},
 	}
 	e.extractAttr()
-	e.generateConstant()
-	e.generateUnicode()
+	e.Constant = generateConstant(e.Constant)
+	e.Code = generateUnicode(e.Code)
 
 	return &e
 }
@@ -113,24 +113,25 @@ func (e *emoji) extractAttr() {
 	e.Constant = c
 }
 
-func (e *emoji) generateConstant() {
-	c := e.Constant
+func generateConstant(c string) string {
 	c = strutil.Clean(c)
 	c = strings.Title(strings.ToLower(c))
 	c = strutil.RemoveSpaces(c)
-	e.Constant = c
+
+	return c
 }
 
-func (e *emoji) generateUnicode() {
+func generateUnicode(code string) string {
 	unicodes := []string{}
-	for _, v := range strings.Split(e.Code, " ") {
+	for _, v := range strings.Split(code, " ") {
 		u, err := strconv.ParseInt(v, 16, 32)
 		if err != nil {
 			panic(fmt.Errorf("unknown unicode: %v", v))
 		}
 		unicodes = append(unicodes, string(u))
 	}
-	e.Code = strings.Join(unicodes, "")
+
+	return strings.Join(unicodes, "")
 }
 
 func defaultTone(basic, toned string) string {

@@ -39,6 +39,8 @@ func main() {
 		emoji.PeopleHoldingHands.Tone(emoji.Medium),
 		emoji.PeopleHoldingHands.Tone(emoji.Light, emoji.Dark),
 	)
+	fmt.Println(emoji.Parse("Emoji aliases are :sunglasses:"))
+	emoji.Println("Use fmt wrappers :+1: with emoji support :tada:")
 }
 
 /* OUTPUT
@@ -49,11 +51,21 @@ func main() {
       default: 👍 light: 👌🏻 dark: 🤙🏿
     Emojis with multiple skin tones.
       both medium: 🧑🏽‍🤝‍🧑🏽 light and dark: 🧑🏻‍🤝‍🧑🏿
-
+    Emoji aliases are 😎
+    Use fmt wrappers 👍 with emoji support 🎉
 */
 ```
 
-This package contains Full Emoji List v13.0 based on [https://unicode.org/Public/emoji/13.0/emoji-test.txt](https://unicode.org/Public/emoji/13.0/emoji-test.txt).
+This package contains emojis constants based on [Full Emoji List v13.0](https://unicode.org/Public/emoji/13.0/emoji-test.txt).
+```go
+emoji.CallMeHand // 🤙
+emoji.CallMeHand.Tone(emoji.Dark) // 🤙🏿
+```
+Also, it has additional emoji aliases from [github/gemoji](https://github.com/github/gemoji).
+```go
+emoji.Parse(":+1:") // 👍
+emoji.Parse(":100:") // 💯
+```
 
 Also, you can generate country flag emoji with [ISO 3166 Alpha2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes:
 ```go
@@ -70,12 +82,16 @@ go test
 ```
 
 ## Todo :pushpin:
-* Add emoji string parser
+* Add `flag-[CODE]` support to emoji string parser
+* Add examples to `godoc`
 
 ## Contributing :man_technologist:
-I am accepting PRs that add characters to the package.
+I am accepting PRs that add aliases to the package.
+You have to add it to `customEmojis` list at `internal/generator/main`.
 
-Please use [this list](http://unicode.org/emoji/charts/full-emoji-list.html) to look up the unicode value and the name of the character.
+If you think an emoji constant is not correct, open an issue.
+Please use [this list](http://unicode.org/emoji/charts/full-emoji-list.html)
+to look up the correct unicode value and the name of the character.
 
 ## Credits :star:
 - [Enes Çakır](https://github.com/enescakir)

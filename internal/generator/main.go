@@ -3,20 +3,31 @@ package main
 import (
 	"bufio"
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"go/format"
 	"io"
 	"io/ioutil"
 	"net/http"
 	"os"
+	"sort"
 	"strings"
 	"text/template"
 	"time"
+	"unicode"
 )
 
 const (
-	emojiListUrl = "https://unicode.org/Public/emoji/13.0/emoji-test.txt"
+	emojiListUrl  = "https://unicode.org/Public/emoji/13.0/emoji-test.txt"
+	gemojiURL     = "https://raw.githubusercontent.com/github/gemoji/master/db/emoji.json"
+	constantsFile = "constants.go"
+	aliasesFile   = "map.go"
 )
+
+// unicode and gemoji databases don't have alias like that
+var customEmojis = map[string]string{
+	":robot_face:": "\U0001f916", // slack
+}
 
 func main() {
 	emojis, err := fetch()
@@ -24,9 +35,14 @@ func main() {
 		panic(err)
 	}
 
-	constants := generate(emojis)
+	constants := generateConstants(emojis)
+	aliases := generateAliases(emojis)
 
-	if err = save(constants); err != nil {
+	if err = save(constantsFile, constants); err != nil {
+		panic(err)
+	}
+
+	if err = save(aliasesFile, aliases); err != nil {
 		panic(err)
 	}
 }
@@ -63,7 +79,111 @@ func fetch() (*groups, error) {
 	return &emojis, nil
 }
 
-func generate(emojis *groups) string {
+func generateAliases(emojis *groups) string {
+	var aliases []string
+	var emojiMap = make(map[string]string)
+
+	for _, grp := range emojis.Groups {
+		for _, subgrp := range grp.Subgroups {
+			for _, c := range subgrp.Constants {
+				emoji := subgrp.Emojis[c][0]
+				alias := ":" + snakeCase(emoji.Constant) + ":"
+				aliases = append(aliases, alias)
+				emojiMap[alias] = emoji.Code
+			}
+		}
+	}
+
+	// add gemoji aliases
+	{
+		gemojis, err := fetchGemoji()
+		if err != nil {
+			panic(err)
+		}
+
+		for alias, code := range gemojis {
+			_, ok := emojiMap[alias]
+			if !ok {
+				aliases = append(aliases, alias)
+			}
+			emojiMap[alias] = code
+		}
+	}
+
+	// add custom emoji aliases
+	{
+		for alias, code := range customEmojis {
+			_, ok := emojiMap[alias]
+			if !ok {
+				aliases = append(aliases, alias)
+			}
+			emojiMap[alias] = code
+		}
+	}
+
+	var res string
+	sort.Strings(aliases)
+	for _, alias := range aliases {
+		res += fmt.Sprintf("%q: %+q,\n", alias, emojiMap[alias])
+	}
+
+	return res
+}
+
+func snakeCase(str string) string {
+	var output strings.Builder
+	for i, r := range str {
+		switch {
+		case unicode.IsUpper(r):
+			if i != 0 {
+				output.WriteRune('_')
+			}
+			output.WriteRune(unicode.ToLower(r))
+		case unicode.IsDigit(r):
+			if i != 0 && !unicode.IsDigit(rune(str[i-1])) {
+				output.WriteRune('_')
+			}
+			output.WriteRune(r)
+		default:
+			output.WriteRune(r)
+		}
+	}
+
+	return output.String()
+}
+
+type gemoji struct {
+	Emoji   string   `json:"emoji"`
+	Aliases []string `json:"aliases"`
+}
+
+func fetchGemoji() (map[string]string, error) {
+	b, err := fetchData(gemojiURL)
+	if err != nil {
+		return nil, err
+	}
+
+	var gemojis []gemoji
+	r := make(map[string]string)
+
+	if err = json.Unmarshal(b, &gemojis); err != nil {
+		return nil, err
+	}
+
+	for _, gemoji := range gemojis {
+		for _, alias := range gemoji.Aliases {
+			if len(alias) == 0 || len(gemoji.Emoji) == 0 {
+				continue
+			}
+
+			r[":"+alias+":"] = gemoji.Emoji
+		}
+	}
+
+	return r, nil
+}
+
+func generateConstants(emojis *groups) string {
 	var res string
 	for _, grp := range emojis.Groups {
 		res += fmt.Sprintf("\n// GROUP: %v\n", grp.Name)
@@ -88,43 +208,47 @@ func emojiConstant(emojis []emoji) string {
 		defaultTone := defaultTone(basic.Code, oneTonedCode)
 
 		if defaultTone != "" {
-			return fmt.Sprintf("%s EmojiWithTone = newEmojiWithTone(%+q).withDefaultTone(%+q) // %s\n", basic.Constant, oneTonedCode, defaultTone, basic.Name)
+			return fmt.Sprintf("%s EmojiWithTone = newEmojiWithTone(%+q).withDefaultTone(%+q) // %s\n",
+				basic.Constant, oneTonedCode, defaultTone, basic.Name)
 		}
 
-		return fmt.Sprintf("%s EmojiWithTone = newEmojiWithTone(%+q) // %s\n", basic.Constant, oneTonedCode, basic.Name)
+		return fmt.Sprintf("%s EmojiWithTone = newEmojiWithTone(%+q) // %s\n",
+			basic.Constant, oneTonedCode, basic.Name)
 	case 26:
 		oneTonedCode := replaceTones(emojis[1].Code)
 		twoTonedCode := replaceTones(emojis[2].Code)
 
-		return fmt.Sprintf("%s EmojiWithTone = newEmojiWithTone(%+q, %+q) // %s\n", basic.Constant, oneTonedCode, twoTonedCode, basic.Name)
+		return fmt.Sprintf("%s EmojiWithTone = newEmojiWithTone(%+q, %+q) // %s\n",
+			basic.Constant, oneTonedCode, twoTonedCode, basic.Name)
 	default:
 		panic(fmt.Errorf("not expected emoji count for a constant: %v", len(emojis)))
 	}
 }
 
-func save(constants string) error {
-	tmpl, err := template.ParseFiles("internal/generator/constants.go.tmpl")
+func save(filename, data string) error {
+	tmpl, err := template.ParseFiles(fmt.Sprintf("internal/generator/%v.tmpl", filename))
 	if err != nil {
 		return err
 	}
 
-	data := struct {
-		Link      string
-		Date      string
-		Constants string
+	d := struct {
+		Link string
+		Date string
+		Data string
 	}{
-		Link:      emojiListUrl,
-		Date:      time.Now().Format(time.RFC3339),
-		Constants: constants,
+		Link: emojiListUrl,
+		Date: time.Now().Format(time.RFC3339),
+		Data: data,
 	}
+
 	var w bytes.Buffer
-	if err = tmpl.Execute(&w, data); err != nil {
+	if err = tmpl.Execute(&w, d); err != nil {
 		return err
 	}
 
 	content, err := format.Source(w.Bytes())
 
-	file, err := os.Create("constants.go")
+	file, err := os.Create(filename)
 	if err != nil {
 		return fmt.Errorf("could not create file: %v", err)
 	}
