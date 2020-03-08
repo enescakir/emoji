@@ -9,10 +9,44 @@ import (
 	emojipkg "github.com/enescakir/emoji"
 )
 
+const emojiListURL = "https://unicode.org/Public/emoji/13.0/emoji-test.txt"
+
 var (
 	emojiRegex = regexp.MustCompile(`^(?m)(?P<code>[A-Z\d ]+[A-Z\d])\s+;\s+(fully-qualified|component)\s+#\s+.+\s+E\d+\.\d+ (?P<name>.+)$`)
 	toneRegex  = regexp.MustCompile(`:\s.*tone,?`)
 )
+
+func fetchEmojis() (*groups, error) {
+	var emojis groups
+	b, err := fetchData(emojiListURL)
+	if err != nil {
+		return nil, err
+	}
+
+	var grp *group
+	var subgrp *subgroup
+
+	parseLine := func(line string) {
+		switch {
+		case strings.HasPrefix(line, "# group:"):
+			name := strings.TrimSpace(strings.ReplaceAll(line, "# group:", ""))
+			grp = emojis.Append(name)
+		case strings.HasPrefix(line, "# subgroup:"):
+			name := strings.TrimSpace(strings.ReplaceAll(line, "# subgroup:", ""))
+			subgrp = grp.Append(name)
+		case !strings.HasPrefix(line, "#"):
+			if e := newEmoji(line); e != nil {
+				subgrp.Append(*e)
+			}
+		}
+	}
+
+	if err = readLines(b, parseLine); err != nil {
+		return nil, err
+	}
+
+	return &emojis, nil
+}
 
 type groups struct {
 	Groups []*group
@@ -81,8 +115,8 @@ func newEmoji(line string) *emoji {
 		Tones:    []string{},
 	}
 	e.extractAttr()
-	e.Constant = generateConstant(e.Constant)
-	e.Code = generateUnicode(e.Code)
+	e.generateConstant()
+	e.generateUnicode()
 
 	return &e
 }
@@ -112,17 +146,17 @@ func (e *emoji) extractAttr() {
 	e.Constant = c
 }
 
-func generateConstant(c string) string {
-	c = clean(c)
+func (e *emoji) generateConstant() {
+	c := clean(e.Constant)
 	c = strings.Title(strings.ToLower(c))
 	c = removeSpaces(c)
 
-	return c
+	e.Constant = c
 }
 
-func generateUnicode(code string) string {
+func (e *emoji) generateUnicode() {
 	unicodes := []string{}
-	for _, v := range strings.Split(code, " ") {
+	for _, v := range strings.Split(e.Code, " ") {
 		u, err := strconv.ParseInt(v, 16, 32)
 		if err != nil {
 			panic(fmt.Errorf("unknown unicode: %v", v))
@@ -130,7 +164,7 @@ func generateUnicode(code string) string {
 		unicodes = append(unicodes, string(u))
 	}
 
-	return strings.Join(unicodes, "")
+	e.Code = strings.Join(unicodes, "")
 }
 
 func defaultTone(basic, toned string) string {

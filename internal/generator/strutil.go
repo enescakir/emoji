@@ -3,6 +3,7 @@ package main
 import (
 	"regexp"
 	"strings"
+	"unicode"
 )
 
 var (
@@ -108,4 +109,31 @@ func clean(str string) string {
 // removeSpaces removes consecutive whitespaces.
 func removeSpaces(str string) string {
 	return whitespaceRegex.ReplaceAllString(str, "")
+}
+
+// snakeCase converts string to snake_case from PascalCase
+func snakeCase(str string) string {
+	var output strings.Builder
+	for i, r := range str {
+		switch {
+		case unicode.IsUpper(r):
+			if i != 0 {
+				output.WriteRune('_')
+			}
+			output.WriteRune(unicode.ToLower(r))
+		case unicode.IsDigit(r):
+			if i != 0 && !unicode.IsDigit(rune(str[i-1])) {
+				output.WriteRune('_')
+			}
+			output.WriteRune(r)
+		default:
+			output.WriteRune(r)
+		}
+	}
+
+	return output.String()
+}
+
+func makeAlias(str string) string {
+	return ":" + str + ":"
 }
