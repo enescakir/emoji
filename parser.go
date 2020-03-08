@@ -72,7 +72,7 @@ func Map() map[string]string {
 
 // AppendAlias adds new emoji pair to the emojis map.
 func AppendAlias(alias, code string) error {
-	if c, ok := emojiMap[alias]; !ok {
+	if c, ok := emojiMap[alias]; ok {
 		return fmt.Errorf("emoji already exist: %q => %+q", alias, c)
 	}
 
@@ -95,11 +95,11 @@ func Exist(alias string) bool {
 }
 
 // Find returns the emoji code by alias.
-func Find(alias string) (string, error) {
+func Find(alias string) (string, bool) {
 	code, ok := emojiMap[alias]
 	if !ok {
-		return "", fmt.Errorf("emoji not found: %q", alias)
+		return "", false
 	}
 
-	return code, nil
+	return code, true
 }
