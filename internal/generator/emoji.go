@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	emojipkg "github.com/enescakir/emoji"
-	"github.com/enescakir/emoji/internal/strutil"
 )
 
 var (
@@ -114,9 +113,9 @@ func (e *emoji) extractAttr() {
 }
 
 func generateConstant(c string) string {
-	c = strutil.Clean(c)
+	c = clean(c)
 	c = strings.Title(strings.ToLower(c))
-	c = strutil.RemoveSpaces(c)
+	c = removeSpaces(c)
 
 	return c
 }

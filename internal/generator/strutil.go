@@ -1,4 +1,4 @@
-package strutil
+package main
 
 import (
 	"regexp"
@@ -92,7 +92,10 @@ var (
 	}
 )
 
-func Clean(str string) string {
+// clean makes string more cleaner.
+// It changes non-latin letters with latin version.
+// It removes non–alpha-numeric characters.
+func clean(str string) string {
 	for o, n := range changes {
 		str = strings.ReplaceAll(str, o, n)
 	}
@@ -102,6 +105,7 @@ func Clean(str string) string {
 	return str
 }
 
-func RemoveSpaces(str string) string {
+// removeSpaces removes consecutive whitespaces.
+func removeSpaces(str string) string {
 	return whitespaceRegex.ReplaceAllString(str, "")
 }
