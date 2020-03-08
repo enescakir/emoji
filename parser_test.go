@@ -86,6 +86,7 @@ func TestAppendAlias(t *testing.T) {
 		{alias: ":my_car:", code: "\U0001f3ce\ufe0f", err: false},
 		{alias: ":berserker:", code: "\U0001f621", err: false},
 		{alias: ":potato:", code: "\U0001f423", err: true},
+		{alias: ":not_valid alias:", code: "\U0001f423", err: true},
 	}
 
 	for i, tc := range tt {
@@ -94,7 +95,7 @@ func TestAppendAlias(t *testing.T) {
 			t.Fatalf("test case %v fail: got: %v, expected: %v", i+1, err, tc.err)
 		}
 
-		if exist := Exist(tc.alias); !exist {
+		if exist := Exist(tc.alias); !exist && !tc.err {
 			t.Fatalf("test case %v fail: got: %v, expected: %v", i+1, !exist, exist)
 		}
 	}
