@@ -58,13 +58,13 @@ func main() {
 
 This package contains emojis constants based on [Full Emoji List v13.0](https://unicode.org/Public/emoji/13.0/emoji-test.txt).
 ```go
-    emoji.CallMeHand // 🤙
-    emoji.CallMeHand.Tone(emoji.Dark) // 🤙🏿
+emoji.CallMeHand // 🤙
+emoji.CallMeHand.Tone(emoji.Dark) // 🤙🏿
 ```
 Also, it has additional emoji aliases from [github/gemoji](https://github.com/github/gemoji).
 ```go
-    emoji.Parse(":+1:") // 👍
-    emoji.Parse(":100:") // 💯
+emoji.Parse(":+1:") // 👍
+emoji.Parse(":100:") // 💯
 ```
 
 Also, you can generate country flag emoji with [ISO 3166 Alpha2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes:
