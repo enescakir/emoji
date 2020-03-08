@@ -82,7 +82,8 @@ go test
 ```
 
 ## Todo :pushpin:
-* Add emoji string parser
+* Add `flag-[CODE]` support to emoji string parser
+* Add examples to `godoc`
 
 ## Contributing :man_technologist:
 I am accepting PRs that add aliases to the package.
