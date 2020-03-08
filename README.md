@@ -53,7 +53,9 @@ func main() {
 */
 ```
 
-This package contains Full Emoji List v13.0 based on [https://unicode.org/Public/emoji/13.0/emoji-test.txt](https://unicode.org/Public/emoji/13.0/emoji-test.txt).
+This package contains emojis constants based on [Full Emoji List v13.0](https://unicode.org/Public/emoji/13.0/emoji-test.txt).
+
+Also, it has additional emoji aliases from [github/gemoji](https://github.com/github/gemoji).
 
 Also, you can generate country flag emoji with [ISO 3166 Alpha2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes:
 ```go
@@ -73,9 +75,12 @@ go test
 * Add emoji string parser
 
 ## Contributing :man_technologist:
-I am accepting PRs that add characters to the package.
+I am accepting PRs that add aliases to the package.
+You have to add it to `customEmojis` list at `internal/generator/main`.
 
-Please use [this list](http://unicode.org/emoji/charts/full-emoji-list.html) to look up the unicode value and the name of the character.
+If you think an emoji constant is not correct, open an issue.
+Please use [this list](http://unicode.org/emoji/charts/full-emoji-list.html)
+to look up the correct unicode value and the name of the character.
 
 ## Credits :star:
 - [Enes Çakır](https://github.com/enescakir)
