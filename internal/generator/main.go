@@ -38,11 +38,11 @@ func main() {
 	constants := generateConstants(emojis)
 	aliases := generateAliases(emojis, gemojis)
 
-	if err = save(constantsFile, constants); err != nil {
+	if err = save(constantsFile, emojiListURL, constants); err != nil {
 		panic(err)
 	}
 
-	if err = save(aliasesFile, aliases); err != nil {
+	if err = save(aliasesFile, gemojiURL, aliases); err != nil {
 		panic(err)
 	}
 }
@@ -134,7 +134,7 @@ func generateAliases(emojis *groups, gemojis map[string]string) string {
 
 	return r
 }
-func save(filename, data string) error {
+func save(filename, url, data string) error {
 	tmpl, err := template.ParseFiles(fmt.Sprintf("internal/generator/%v.tmpl", filename))
 	if err != nil {
 		return err
@@ -145,7 +145,7 @@ func save(filename, data string) error {
 		Date string
 		Data string
 	}{
-		Link: emojiListUrl,
+		Link: url,
 		Date: time.Now().Format(time.RFC3339),
 		Data: data,
 	}
