@@ -39,6 +39,8 @@ func main() {
 		emoji.PeopleHoldingHands.Tone(emoji.Medium),
 		emoji.PeopleHoldingHands.Tone(emoji.Light, emoji.Dark),
 	)
+    fmt.Println(emoji.Parse("Emoji aliases are :sunglasses:"))
+    emoji.Println("Use fmt wrappers :+1: with emoji support :tada:")
 }
 
 /* OUTPUT
@@ -49,7 +51,8 @@ func main() {
       default: 👍 light: 👌🏻 dark: 🤙🏿
     Emojis with multiple skin tones.
       both medium: 🧑🏽‍🤝‍🧑🏽 light and dark: 🧑🏻‍🤝‍🧑🏿
-
+    Emoji aliases are 😎
+    Use fmt wrappers 👍 with emoji support 🎉
 */
 ```
 
