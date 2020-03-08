@@ -59,6 +59,7 @@ func main() {
 This package contains emojis constants based on [Full Emoji List v13.0](https://unicode.org/Public/emoji/13.0/emoji-test.txt).
 ```go
     emoji.CallMeHand // 🤙
+    emoji.CallMeHand.Tone(emoji.Dark) // 🤙🏿
 ```
 Also, it has additional emoji aliases from [github/gemoji](https://github.com/github/gemoji).
 ```go
