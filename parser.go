@@ -48,15 +48,8 @@ func Parse(input string) string {
 		alias := match + ":"
 
 		// check for emoji alias
-		if code, ok := emojiMap[alias]; ok {
+		if code, ok := Find(alias); ok {
 			output.WriteString(code)
-			matched.Reset()
-			continue
-		}
-
-		// check for `flag-[CODE]` emoji
-		if flag := checkFlag(alias); len(flag) > 0 {
-			output.WriteString(flag)
 			matched.Reset()
 			continue
 		}
@@ -76,17 +69,6 @@ func Parse(input string) string {
 	}
 
 	return output.String()
-}
-
-// checkFlag finds flag emoji for `flag-[CODE]` pattern
-func checkFlag(alias string) string {
-	if matches := flagRegex.FindStringSubmatch(alias); len(matches) == 2 {
-		flag, _ := CountryFlag(matches[1])
-
-		return flag.String()
-	}
-
-	return ""
 }
 
 // Map returns the emojis map.
@@ -115,17 +97,31 @@ func AppendAlias(alias, code string) error {
 
 // Exist checks existence of the emoji by alias.
 func Exist(alias string) bool {
-	_, ok := emojiMap[alias]
+	_, ok := Find(alias)
 
 	return ok
 }
 
 // Find returns the emoji code by alias.
 func Find(alias string) (string, bool) {
-	code, ok := emojiMap[alias]
-	if !ok {
-		return "", false
+	if code, ok := emojiMap[alias]; ok {
+		return code, true
 	}
 
-	return code, true
+	if flag := checkFlag(alias); len(flag) > 0 {
+		return flag, true
+	}
+
+	return "", false
+}
+
+// checkFlag finds flag emoji for `flag-[CODE]` pattern
+func checkFlag(alias string) string {
+	if matches := flagRegex.FindStringSubmatch(alias); len(matches) == 2 {
+		flag, _ := CountryFlag(matches[1])
+
+		return flag.String()
+	}
+
+	return ""
 }
