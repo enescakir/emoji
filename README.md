@@ -67,7 +67,7 @@ emoji.Parse(":+1:") // 👍
 emoji.Parse(":100:") // 💯
 ```
 
-Also, you can generate country flag emoji with [ISO 3166 Alpha2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes:
+You can generate country flag emoji with [ISO 3166 Alpha2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes:
 ```go
 emoji.CountryFlag("tr") // 🇹🇷
 emoji.CountryFlag("US") // 🇺🇸
