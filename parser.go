@@ -17,6 +17,7 @@ var (
 func Parse(input string) string {
 	matched := &bytes.Buffer{}
 	var output strings.Builder
+	output.Grow(len(input))
 
 	for _, r := range input {
 		// when it's not `:`, it might be inner or outer of the emoji alias

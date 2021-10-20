@@ -69,10 +69,13 @@ func TestParse(t *testing.T) {
 	}
 
 	for i, tc := range tt {
-		got := Parse(tc.input)
-		if got != tc.expected {
-			t.Fatalf("test case %v fail: got: %v, expected: %v", i+1, got, tc.expected)
-		}
+		t.Run(fmt.Sprintf("test #%d", i), func(t *testing.T) {
+			got := Parse(tc.input)
+
+			if got != tc.expected {
+				t.Fatalf("test case %v fail: got: %v, expected: %v", i+1, got, tc.expected)
+			}
+		})
 	}
 }
 
@@ -146,14 +149,16 @@ func TestFind(t *testing.T) {
 	}
 
 	for i, tc := range tt {
-		got, exist := Find(tc.input)
-		if got != tc.expected {
-			t.Fatalf("test case %v fail: got: %v, expected: %v", i+1, got, tc.expected)
-		}
+		t.Run(fmt.Sprintf("test #%d", i), func(t *testing.T) {
+			got, exist := Find(tc.input)
+			if got != tc.expected {
+				t.Fatalf("test case %v fail: got: %v, expected: %v", i+1, got, tc.expected)
+			}
 
-		if exist != tc.exist {
-			t.Fatalf("test case %v fail: got: %v, expected: %v", i+1, exist, tc.exist)
-		}
+			if exist != tc.exist {
+				t.Fatalf("test case %v fail: got: %v, expected: %v", i+1, exist, tc.exist)
+			}
+		})
 	}
 }
 
