@@ -158,6 +158,8 @@ func TestFind(t *testing.T) {
 }
 
 func BenchmarkParse(b *testing.B) {
+	b.ReportAllocs()
+
 	for n := 0; n < b.N; n++ {
 		_ = Parse("I am :man_technologist: from :flag_for_turkey:. Tests are :thumbs_up:")
 	}

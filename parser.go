@@ -45,7 +45,8 @@ func Parse(input string) string {
 
 		// it's the end of the emoji alias
 		match := matched.String()
-		alias := match + ":"
+		matched.WriteByte(':')
+		alias := matched.String()
 
 		// check for emoji alias
 		if code, ok := Find(alias); ok {
@@ -59,7 +60,6 @@ func Parse(input string) string {
 		// it might be the beginning of the another emoji alias
 		matched.Reset()
 		matched.WriteRune(r)
-
 	}
 
 	// if matched not empty, add it to output
