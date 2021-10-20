@@ -13,9 +13,27 @@ var (
 	flagRegex = regexp.MustCompile(`^:flag-([a-zA-Z]{2}):$`)
 )
 
+type Parser struct {
+	matched bytes.Buffer
+}
+
+func NewParser() *Parser {
+	return &Parser{matched: bytes.Buffer{}}
+}
+
+// Parse replaces emoji aliases (:pizza:) with unicode representation.
+func (p *Parser) Parse(input string) string {
+	p.matched.Reset()
+	return parseInternal(input, &p.matched)
+}
+
 // Parse replaces emoji aliases (:pizza:) with unicode representation.
 func Parse(input string) string {
-	matched := &bytes.Buffer{}
+	return parseInternal(input, &bytes.Buffer{})
+}
+
+// Parse replaces emoji aliases (:pizza:) with unicode representation.
+func parseInternal(input string, matched *bytes.Buffer) string {
 	var output strings.Builder
 	output.Grow(len(input))
 
