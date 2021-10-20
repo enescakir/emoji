@@ -1,10 +1,12 @@
 package emoji
 
 import (
+	"bytes"
 	"fmt"
 	"regexp"
 	"strings"
 	"unicode"
+	"unsafe"
 )
 
 var (
@@ -13,7 +15,7 @@ var (
 
 // Parse replaces emoji aliases (:pizza:) with unicode representation.
 func Parse(input string) string {
-	var matched strings.Builder
+	matched := &bytes.Buffer{}
 	var output strings.Builder
 
 	for _, r := range input {
@@ -30,7 +32,7 @@ func Parse(input string) string {
 			// if it's space, the alias's not valid.
 			// reset matched for breaking the emoji alias
 			if unicode.IsSpace(r) {
-				output.WriteString(matched.String())
+				output.WriteString(unsafeString(matched))
 				matched.Reset()
 			}
 			continue
@@ -39,14 +41,14 @@ func Parse(input string) string {
 		// r is `:` now
 		// if matched is empty, it's the beginning of the emoji alias
 		if matched.Len() == 0 {
-			matched.WriteRune(r)
+			matched.WriteByte(':')
 			continue
 		}
 
 		// it's the end of the emoji alias
-		match := matched.String()
+		match := unsafeString(matched)
 		matched.WriteByte(':')
-		alias := matched.String()
+		alias := unsafeString(matched)
 
 		// check for emoji alias
 		if code, ok := Find(alias); ok {
@@ -59,12 +61,12 @@ func Parse(input string) string {
 		output.WriteString(match)
 		// it might be the beginning of the another emoji alias
 		matched.Reset()
-		matched.WriteRune(r)
+		matched.WriteByte(':')
 	}
 
 	// if matched not empty, add it to output
 	if matched.Len() != 0 {
-		output.WriteString(matched.String())
+		output.WriteString(unsafeString(matched))
 		matched.Reset()
 	}
 
@@ -124,4 +126,9 @@ func checkFlag(alias string) string {
 	}
 
 	return ""
+}
+
+func unsafeString(matched *bytes.Buffer) string {
+	buf := matched.Bytes()
+	return *(*string)(unsafe.Pointer(&buf))
 }
