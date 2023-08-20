@@ -7,6 +7,8 @@ import (
 	"strings"
 
 	emojipkg "github.com/enescakir/emoji"
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 )
 
 const emojiListURL = "https://unicode.org/Public/emoji/13.0/emoji-test.txt"
@@ -148,7 +150,8 @@ func (e *emoji) extractAttr() {
 
 func (e *emoji) generateConstant() {
 	c := clean(e.Constant)
-	c = strings.Title(strings.ToLower(c))
+	caser := cases.Title(language.English)
+	c = caser.String(strings.ToLower(c))
 	c = removeSpaces(c)
 
 	e.Constant = c
@@ -161,7 +164,7 @@ func (e *emoji) generateUnicode() {
 		if err != nil {
 			panic(fmt.Errorf("unknown unicode: %v", v))
 		}
-		unicodes = append(unicodes, string(u))
+		unicodes = append(unicodes, fmt.Sprint(u))
 	}
 
 	e.Code = strings.Join(unicodes, "")
